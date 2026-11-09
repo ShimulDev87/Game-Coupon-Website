@@ -1,0 +1,153 @@
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+
+body {
+    background: linear-gradient(135deg, #0d061f, #1a0933, #260d4f);
+    color: #ffffff;
+    min-height: 100vh;
+    padding: 20px;
+}
+
+.admin-container {
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.admin-header {
+    text-align: center;
+    margin-bottom: 30px;
+}
+
+.admin-header h1 {
+    font-size: 28px;
+    color: #f39c12;
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+}
+
+.admin-header p {
+    color: #b19cd9;
+    font-size: 14px;
+}
+
+/* Card Styling (Glassmorphism Effect) */
+.card {
+    background: rgba(26, 15, 51, 0.85);
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    border-radius: 12px;
+    padding: 25px;
+    margin-bottom: 25px;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.card h2 {
+    font-size: 20px;
+    margin-bottom: 15px;
+    color: #f1c40f;
+}
+
+/* Form Styling */
+.form-group {
+    margin-bottom: 15px;
+}
+
+.form-group label {
+    display: block;
+    margin-bottom: 5px;
+    color: #d1c4e9;
+}
+
+.form-group input {
+    width: 100%;
+    padding: 12px;
+    background: #0f0524;
+    border: 1px solid #512da8;
+    border-radius: 8px;
+    color: #fff;
+    font-size: 16px;
+}
+
+.form-group input:focus {
+    border-color: #f39c12;
+    outline: none;
+}
+
+/* Button Styling (Glossy Gold) */
+button {
+    background: linear-gradient(135deg, #f39c12, #d35400);
+    color: white;
+    border: none;
+    padding: 12px 20px;
+    border-radius: 8px;
+    font-size: 16px;
+    font-weight: 600;
+    cursor: pointer;
+    transition: 0.3s ease;
+    box-shadow: 0 4px 15px rgba(243, 156, 18, 0.4);
+}
+
+button:hover {
+    background: linear-gradient(135deg, #f1c40f, #e67e22);
+    transform: translateY(-2px);
+}
+
+/* Table Styling */
+.table-wrapper {
+    overflow-x: auto;
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-top: 10px;
+}
+
+th, td {
+    padding: 12px 15px;
+    text-align: left;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+th {
+    background-color: rgba(43, 22, 84, 0.9);
+    color: #f39c12;
+    font-weight: 600;
+}
+
+td {
+    color: #e0d7ff;
+}
+
+/* Status Badges */
+.active {
+    background-color: rgba(46, 204, 113, 0.2);
+    color: #2ecc71;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.used {
+    background-color: rgba(231, 76, 60, 0.2);
+    color: #e74c3c;
+    padding: 5px 10px;
+    border-radius: 5px;
+    font-size: 12px;
+    font-weight: 600;
+}
+
+/* Small Copy Button inside Table */
+td button {
+    padding: 6px 12px;
+    font-size: 12px;
+    background: #3498db;
+    box-shadow: none;
+}
+
+td button:hover {
+    background: #2980b9;
+}

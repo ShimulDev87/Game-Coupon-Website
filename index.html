@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Casino Suite - Admin Dashboard</title>
+    <link rel="stylesheet" href="style.css">
+    <!-- Google Fonts -->
+    <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <!-- Admin Wrapper -->
+    <div class="admin-container">
+        
+        <!-- Header -->
+        <header class="admin-header">
+            <h1> Admin Dashboard</h1>
+            <p>Manage Game Coupons & Top-ups</p>
+        </header>
+
+        <!-- Generator Section -->
+        <div class="card generator-card">
+            <h2>Generate New Coupon</h2>
+            <div class="form-group">
+                <label for="coinAmount">Coin Amount:</label>
+                <input type="number" id="coinAmount" placeholder="e.g. 1000" value="1000">
+            </div>
+            <button id="generateBtn" onclick="generateCoupon()">Generate Coupon Code</button>
+        </div>
+
+        <!-- Coupons Table Section -->
+        <div class="card table-card">
+            <h2>Generated Coupons List</h2>
+            <div class="table-wrapper">
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Coupon Code</th>
+                            <th>Coins</th>
+                            <th>Status</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody id="couponTableBody">
+                        <!-- Dynamic rows will load here -->
+                    </tbody>
+                </table>
+            </div>
+        </div>
+
+    </div>
+
+    <!-- Firebase App (Compat SDKs for web integration) -->
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
+    <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
+
+    <!-- Custom App Script -->
+    <script src="app.js"></script>
+</body>
+</html>
