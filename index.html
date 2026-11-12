@@ -5,7 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Game Coupon - Admin Dashboard</title>
     <link rel="stylesheet" href="style.css">
-    <!-- Google Fonts -->
+    <!-- Google Fonts (Poppins Font Linked) -->
     <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap" rel="stylesheet">
 </head>
 <body>
@@ -15,9 +15,21 @@
         
         <!-- Header -->
         <header class="admin-header">
-            <h1> Admin Dashboard</h1>
+            <h1>Admin Dashboard</h1>
             <p>Manage Game Coupons & Top-ups</p>
         </header>
+
+        <!-- Analytics Dashboard Summary Cards -->
+        <div class="analytics-container">
+            <div class="analytic-card">
+                <h3>Active Online Players</h3>
+                <p id="activePlayersText">0</p>
+            </div>
+            <div class="analytic-card">
+                <h3>Daily Cash / Coin Added</h3>
+                <p id="dailyCoinsText">0 Coins</p>
+            </div>
+        </div>
 
         <!-- Generator Section -->
         <div class="card generator-card">
@@ -51,8 +63,9 @@
                             <th>Coupon Code</th>
                             <th>Customer Info</th>
                             <th>Coins</th>
+                            <th>Created Date</th> <!-- ডেট দেখানোর জন্য নতুন হেডার -->
                             <th>Status</th>
-                            <th>Action</th>
+                            <th>Action</th>      <!-- কপি এবং ডিলিট বাটনের জন্য -->
                         </tr>
                     </thead>
                     <tbody id="couponTableBody">

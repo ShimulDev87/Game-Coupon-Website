@@ -13,7 +13,7 @@ body {
 }
 
 .admin-container {
-    max-width: 900px;
+    max-width: 950px; 
     margin: 0 auto;
 }
 
@@ -140,14 +140,55 @@ td {
     font-weight: 600;
 }
 
-/* Small Copy Button inside Table */
+/* Action Buttons inside Table (Copy & Delete) */
 td button {
     padding: 6px 12px;
     font-size: 12px;
-    background: #3498db;
+    background: #3498db; 
     box-shadow: none;
+    margin-right: 5px;
 }
 
 td button:hover {
     background: #2980b9;
+    transform: none; 
+}
+
+/* Delete Button Specific Styling (જો ডিলিট বাটন ব্যবহার করেন) */
+td button[onclick*="deleteCoupon"] {
+    background: #e74c3c;
+}
+
+td button[onclick*="deleteCoupon"]:hover {
+    background: #c0392b;
+}
+
+/* Analytics Dashboard Cards */
+.analytics-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+    gap: 20px;
+    margin-bottom: 25px;
+}
+
+.analytic-card {
+    background: rgba(26, 15, 51, 0.85);
+    border: 1px solid rgba(243, 156, 18, 0.3);
+    border-radius: 12px;
+    padding: 20px;
+    text-align: center;
+    box-shadow: 0 8px 32px rgba(0, 0, 0, 0.4);
+}
+
+.analytic-card h3 {
+    font-size: 14px;
+    color: #b19cd9;
+    margin-bottom: 8px;
+    text-transform: uppercase;
+}
+
+.analytic-card p {
+    font-size: 24px;
+    font-weight: 700;
+    color: #f39c12;
 }
