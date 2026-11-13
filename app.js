@@ -100,10 +100,10 @@ function loadCoupons() {
                     <td style="font-size: 11px; color: #aaa;">${formattedDate}</td>
                     <td><span class="${data.is_used ? 'used' : 'active'}">${data.is_used ? 'USED' : 'ACTIVE'}</span></td>
                     <td>
-                        <!-- নতুন কাস্টম কপি বাটন (যা ক্লিক করলে "Copied!" দেখাবে) -->
+                        
                         <button onclick="copyCouponCode(this, '${data.code}')" style="margin-right: 5px;">Copy</button>
                         
-                        <!-- ব্যবহৃত কুপন হলে ডিলিট বাটন দেখাবে -->
+                        
                         ${data.is_used ? `<button onclick="deleteCoupon('${data.code}')" style="background-color: #e74c3c; color: white; border: none; padding: 4px 8px; border-radius: 4px; cursor: pointer;">Delete</button>` : ''}
                     </td>
                 </tr>
@@ -117,17 +117,17 @@ function loadCoupons() {
         console.error("Error loading coupons: ", error);
     });
 
-    // রিয়েল-টাইম একটিভ অনলাইন প্লেয়ার কাউন্ট ফেচ করা
+    
     fetchActivePlayersCount();
 }
 
-// ৪. ব্যবহৃত কুপন ডিলিট করার ফাংশন
+
 async function deleteCoupon(couponCode) {
     if (confirm(`Are you sure you want to delete coupon: ${couponCode}?`)) {
         try {
             await db.collection("coupons").doc(couponCode).delete();
             alert("Coupon deleted successfully!");
-            loadCoupons(); // টেবিল রিফ্রেশ করবে
+            loadCoupons(); 
         } catch (error) {
             console.error("Error deleting coupon: ", error);
             alert("Failed to delete coupon.");
@@ -135,7 +135,7 @@ async function deleteCoupon(couponCode) {
     }
 }
 
-// ৫. রিয়েল-টাইম একটিভ প্লেয়ার দেখানোর ফাংশন (ফায়ারবেসের 'analytics/online_status' ডকুমেন্ট থেকে ডাটা নিবে)
+
 function fetchActivePlayersCount() {
     db.collection("analytics").doc("online_status").onSnapshot((doc) => {
         const activeElem = document.getElementById("activePlayersText");

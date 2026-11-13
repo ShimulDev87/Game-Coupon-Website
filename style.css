@@ -154,7 +154,7 @@ td button:hover {
     transform: none; 
 }
 
-/* Delete Button Specific Styling (જો ডিলিট বাটন ব্যবহার করেন) */
+
 td button[onclick*="deleteCoupon"] {
     background: #e74c3c;
 }
@@ -191,4 +191,97 @@ td button[onclick*="deleteCoupon"]:hover {
     font-size: 24px;
     font-weight: 700;
     color: #f39c12;
+}
+
+/* === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET STYLES === */
+#project-status-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    width: 300px;
+    background: rgba(15, 12, 41, 0.95);
+    border: 1px solid rgba(255, 165, 0, 0.4);
+    border-radius: 12px;
+    padding: 15px;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    backdrop-filter: blur(8px);
+}
+
+.status-header {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffa500;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 77, 77, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+}
+
+.status-content {
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-row span {
+    color: #b3b3b3;
+}
+
+.countdown-style {
+    font-size: 11px;
+    color: #00ffcc;
+    font-family: monospace;
+}
+
+.blinking-text {
+    color: #ff4d4d;
+    animation: blinkEffect 1s infinite alternate;
+}
+
+@keyframes blinkEffect {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+.status-footer {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 6px;
+    min-height: 25px;
+}
+
+/* Typing Effect Note Style */
+/* Typing Note Style - শুরুতে হালকা আবছা রঙে ফিক্সড থাকবে */
+.typing-note {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.25); /* আবছা বা হালকা দৃশ্যমান রঙ */
+    letter-spacing: 0.3px;
+    transition: color 0.5s ease;
+    display: inline-block;
 }

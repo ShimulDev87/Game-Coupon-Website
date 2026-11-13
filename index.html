@@ -77,6 +77,193 @@
 
     </div>
 
+   <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
+    <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
+<div id="project-status-widget">
+    <div class="status-header">
+        <span class="pulse-dot"></span> Project Milestone
+    </div>
+    
+    <div class="status-content">
+        <div class="status-row">
+            <span>Total Budget:</span>
+            <strong>$900 USD</strong>
+        </div>
+        <div class="status-row">
+            <span>Advance Status:</span>
+            <strong class="blinking-text due-text">10,000 BDT or 80.18 USD (Due)</strong>
+        </div>
+        <div class="status-row">
+            <span>Deadline:</span>
+            <!-- ফিক্সড ডেট এবং লাইভ কাউন্টডাউন একসাথে শো করার আইডি -->
+            <strong id="countdown-timer" class="countdown-style">30 Dec 2026 | Calculating...</strong>
+        </div>
+    </div>
+
+    <div class="status-footer">
+        <!-- শুরুতে লেখাটি হালকা আবছা রঙে দৃশ্যমান থাকবে -->
+        <small id="typing-note" class="typing-note">*Note: This status panel will vanish automatically after successful project submission and final payment clearance.</small>
+    </div>
+</div>
+
+<script>
+// ১. লাইভ কাউন্টডাউন টাইমার (ডিসেম্বর ৩০, ২০২৬ পর্যন্ত)
+const deadlineDate = new Date("December 30, 2026 23:59:59").getTime();
+
+const timerInterval = setInterval(function() {
+    const now = new Date().getTime();
+    const distance = deadlineDate - now;
+
+    if (distance < 0) {
+        document.getElementById("countdown-timer").innerHTML = "30 Dec 2026 - DEADLINE REACHED";
+        clearInterval(timerInterval);
+        return;
+    }
+
+    const days = Math.floor(distance / (1000 * 60 * 60 * 24));
+    const hours = Math.floor((distance % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
+    const seconds = Math.floor((distance % (1000 * 60)) / 1000);
+
+    // ফিক্সড ডেট এর সাথে লাইভ কাউন্টডাউন আপডেট হবে
+    document.getElementById("countdown-timer").innerHTML = `30 Dec 2026 | ${days}d ${hours}h ${minutes}m ${seconds}s`;
+}, 1000);
+
+
+// ২. টাইপিং ইফেক্ট এবং লুপ লজিক
+const noteText = "*Note: This status panel will vanish automatically after successful project submission and final payment clearance.";
+const typingElement = document.getElementById("typing-note");
+let charIndex = 0;
+
+function typeWriter() {
+    if (charIndex <= noteText.length) {
+        typingElement.innerHTML = noteText.substring(0, charIndex);
+        charIndex++;
+        setTimeout(typeWriter, 25); // টাইপিং স্পিড
+    } else {
+        // টাইপিং শেষ হলে লেখাটি উজ্জ্বল সোনালী রঙ ধারণ করবে
+        typingElement.style.color = "#ffcc00"; 
+        
+        // ৬০ সেকেন্ড (60000 ms) পর আবার রিসেট হয়ে লুপ শুরু হবে
+        setTimeout(resetAndRestart, 60000); 
+    }
+}
+
+function resetAndRestart() {
+    // রিসেট হওয়ার সময় আবার হালকা আবছা রঙে ফিরে যাবে
+    typingElement.style.color = "rgba(255, 255, 255, 0.25)"; 
+    charIndex = 0;
+    setTimeout(typeWriter, 500);
+}
+
+// পেজ লোড হওয়ার ১ সেকেন্ড পর টাইপিং শুরু হবে
+setTimeout(typeWriter, 1000);
+</script>
+
+<style>
+/* Floating Widget Container (Right/Left Fixed) */
+#project-status-widget {
+    position: fixed;
+    bottom: 20px;
+    right: 20px; 
+    width: 300px;
+    background: rgba(15, 12, 41, 0.95);
+    border: 1px solid rgba(255, 165, 0, 0.4);
+    border-radius: 12px;
+    padding: 15px;
+    color: #fff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+    box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+    z-index: 99999;
+    backdrop-filter: blur(8px);
+}
+
+/* Header style with a live pulsing indicator */
+.status-header {
+    font-size: 14px;
+    font-weight: bold;
+    color: #ffa500;
+    margin-bottom: 10px;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+    padding-bottom: 6px;
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.pulse-dot {
+    width: 8px;
+    height: 8px;
+    background-color: #ff4d4d;
+    border-radius: 50%;
+    box-shadow: 0 0 0 rgba(255, 77, 77, 0.4);
+    animation: pulse 1.5s infinite;
+}
+
+@keyframes pulse {
+    0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
+    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 77, 77, 0); }
+    100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+}
+
+/* Content Rows */
+.status-content {
+    font-size: 13px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+}
+
+.status-row {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.status-row span {
+    color: #b3b3b3;
+}
+
+.countdown-style {
+    font-size: 11px;
+    color: #00ffcc;
+    font-family: monospace;
+}
+
+/* Blinking Effect for Due/Amounts */
+.blinking-text {
+    color: #ff4d4d;
+    animation: blinkEffect 1s infinite alternate;
+}
+
+@keyframes blinkEffect {
+    0% { opacity: 1; }
+    100% { opacity: 0.3; }
+}
+
+/* Footer Note */
+.status-footer {
+    margin-top: 10px;
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+    padding-top: 6px;
+    min-height: 25px;
+}
+
+/* Typing Note Style - শুরুতে হালকা আবছা রঙে দৃশ্যমান থাকবে */
+.typing-note {
+    font-size: 10px;
+    color: rgba(255, 255, 255, 0.25);
+    letter-spacing: 0.3px;
+    transition: color 0.5s ease;
+    display: block;
+    line-height: 1.2;
+}
+</style>
+
+
+
+</style>
+
     <!-- Firebase App (Compat SDKs for web integration) -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
