@@ -79,15 +79,18 @@
 
    <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
     <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
+
+    <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
 <div id="project-status-widget">
     <div class="status-header">
         <span class="pulse-dot"></span> Project Milestone
     </div>
-
-    <div class="project-desc-row">
-        <span>Scope:</span> <strong>1-2 Page Admin Dashboard & 3 Games (Ludo, Carrom, 8 Ball Pool)</strong>
-    </div>
     
+    <!-- ছোট এবং কমপ্যাক্ট স্কোপ টেক্সট -->
+    <div class="project-desc-row">
+        <span>Scope:</span> <strong>Admin Dashboard & 3 Games (Ludo, Carrom, 8BP)</strong>
+    </div>
+
     <div class="status-content">
         <div class="status-row">
             <span>Total Budget:</span>
@@ -95,17 +98,15 @@
         </div>
         <div class="status-row">
             <span>Advance Status:</span>
-            <strong class="blinking-text due-text">10,000 BDT or 80.18 USD (Due)</strong>
+            <strong class="blinking-text due-text">10,000 BDT (Due)</strong>
         </div>
         <div class="status-row">
             <span>Deadline:</span>
-            <!-- ফিক্সড ডেট এবং লাইভ কাউন্টডাউন একসাথে শো করার আইডি -->
             <strong id="countdown-timer" class="countdown-style">30 Dec 2026 | Calculating...</strong>
         </div>
     </div>
 
     <div class="status-footer">
-        <!-- শুরুতে লেখাটি হালকা আবছা রঙে দৃশ্যমান থাকবে -->
         <small id="typing-note" class="typing-note">*Note: This status panel will vanish automatically after successful project submission and final payment clearance.</small>
     </div>
 </div>
@@ -129,7 +130,6 @@ const timerInterval = setInterval(function() {
     const minutes = Math.floor((distance % (1000 * 60 * 60)) / (1000 * 60));
     const seconds = Math.floor((distance % (1000 * 60)) / 1000);
 
-    // ফিক্সড ডেট এর সাথে লাইভ কাউন্টডাউন আপডেট হবে
     document.getElementById("countdown-timer").innerHTML = `30 Dec 2026 | ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }, 1000);
 
@@ -143,38 +143,33 @@ function typeWriter() {
     if (charIndex <= noteText.length) {
         typingElement.innerHTML = noteText.substring(0, charIndex);
         charIndex++;
-        setTimeout(typeWriter, 25); // টাইপিং স্পিড
+        setTimeout(typeWriter, 25); 
     } else {
-        // টাইপিং শেষ হলে লেখাটি উজ্জ্বল সোনালী রঙ ধারণ করবে
         typingElement.style.color = "#ffcc00"; 
-        
-        // ৬০ সেকেন্ড (60000 ms) পর আবার রিসেট হয়ে লুপ শুরু হবে
         setTimeout(resetAndRestart, 60000); 
     }
 }
 
 function resetAndRestart() {
-    // রিসেট হওয়ার সময় আবার হালকা আবছা রঙে ফিরে যাবে
     typingElement.style.color = "rgba(255, 255, 255, 0.25)"; 
     charIndex = 0;
     setTimeout(typeWriter, 500);
 }
 
-// পেজ লোড হওয়ার ১ সেকেন্ড পর টাইপিং শুরু হবে
 setTimeout(typeWriter, 1000);
 </script>
 
 <style>
-/* Floating Widget Container (Right/Left Fixed) */
+/* Floating Widget Container - সাইজ ছোট ও স্লিম করা হলো */
 #project-status-widget {
     position: fixed;
     bottom: 20px;
     right: 20px; 
-    width: 300px;
+    width: 275px; /* উইজেটের চওড়া কমানো হলো */
     background: rgba(15, 12, 41, 0.95);
     border: 1px solid rgba(255, 165, 0, 0.4);
-    border-radius: 12px;
-    padding: 15px;
+    border-radius: 10px;
+    padding: 12px; /* প্যাডিং কমানো হলো */
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -182,22 +177,22 @@ setTimeout(typeWriter, 1000);
     backdrop-filter: blur(8px);
 }
 
-/* Header style with a live pulsing indicator */
+/* Header style */
 .status-header {
-    font-size: 14px;
+    font-size: 13px;
     font-weight: bold;
     color: #ffa500;
-    margin-bottom: 10px;
+    margin-bottom: 6px;
     border-bottom: 1px solid rgba(255, 255, 255, 0.1);
-    padding-bottom: 6px;
+    padding-bottom: 5px;
     display: flex;
     align-items: center;
     gap: 8px;
 }
 
 .pulse-dot {
-    width: 8px;
-    height: 8px;
+    width: 7px;
+    height: 7px;
     background-color: #ff4d4d;
     border-radius: 50%;
     box-shadow: 0 0 0 rgba(255, 77, 77, 0.4);
@@ -206,16 +201,38 @@ setTimeout(typeWriter, 1000);
 
 @keyframes pulse {
     0% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0.7); }
-    70% { transform: scale(1); box-shadow: 0 0 0 8px rgba(255, 77, 77, 0); }
+    70% { transform: scale(1); box-shadow: 0 0 0 6px rgba(255, 77, 77, 0); }
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
+}
+
+/* প্রজেক্ট ডেসক্রিপশন স্টাইল ছোট করা হলো */
+.project-desc-row {
+    font-size: 10px;
+    color: #d1d5db;
+    background: rgba(255, 255, 255, 0.05);
+    padding: 5px 6px;
+    border-radius: 5px;
+    margin-bottom: 8px;
+    line-height: 1.2;
+    border-left: 2px solid #ffa500;
+}
+
+.project-desc-row span {
+    color: #9ca3af;
+    font-weight: 500;
+}
+
+.project-desc-row strong {
+    color: #ffffff;
+    font-weight: 600;
 }
 
 /* Content Rows */
 .status-content {
-    font-size: 13px;
+    font-size: 12px; /* ফন্ট সাইজ সামান্য কমানো হলো */
     display: flex;
     flex-direction: column;
-    gap: 6px;
+    gap: 5px;
 }
 
 .status-row {
@@ -229,12 +246,21 @@ setTimeout(typeWriter, 1000);
 }
 
 .countdown-style {
-    font-size: 11px;
+    font-size: 10px;
     color: #00ffcc;
     font-family: monospace;
 }
 
-/* Blinking Effect for Due/Amounts */
+/* বাজেট স্ট্যাটাস ব্যাজ */
+.budget-status-badge {
+    color: #ff4d4d;
+    font-size: 10px;
+    font-weight: 700;
+    margin-left: 3px;
+    animation: blinkEffect 1s infinite alternate;
+}
+
+/* Blinking Effect */
 .blinking-text {
     color: #ff4d4d;
     animation: blinkEffect 1s infinite alternate;
@@ -247,17 +273,17 @@ setTimeout(typeWriter, 1000);
 
 /* Footer Note */
 .status-footer {
-    margin-top: 10px;
+    margin-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
-    padding-top: 6px;
-    min-height: 25px;
+    padding-top: 5px;
+    min-height: 22px;
 }
 
-/* Typing Note Style - শুরুতে হালকা আবছা রঙে দৃশ্যমান থাকবে */
+/* Typing Note Style */
 .typing-note {
-    font-size: 10px;
+    font-size: 9px;
     color: rgba(255, 255, 255, 0.25);
-    letter-spacing: 0.3px;
+    letter-spacing: 0.2px;
     transition: color 0.5s ease;
     display: block;
     line-height: 1.2;
