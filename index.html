@@ -51,6 +51,15 @@
             </div>
 
             <button id="generateBtn" onclick="generateCoupon()">Generate Coupon Code</button>
+
+            <!-- ক্লায়েন্টের চাহিদা অনুযায়ী: জেনারেট বাটনের ঠিক নিচে ইনস্ট্যান্ট রিসেন্ট কুপন ও কপি বক্স -->
+            <div id="instantResultContainer" class="instant-result-box" style="display: none;">
+                <div class="instant-info">
+                    <span class="instant-label">Latest Generated Code:</span>
+                    <strong id="instantCodeText" class="instant-code">---</strong>
+                </div>
+                <button id="instantCopyBtn" class="instant-copy-btn" onclick="copyInstantCode()">Copy Code</button>
+            </div>
         </div>
 
         <!-- Coupons Table Section -->
@@ -63,9 +72,9 @@
                             <th>Coupon Code</th>
                             <th>Customer Info</th>
                             <th>Coins</th>
-                            <th>Created Date</th> <!-- ডেট দেখানোর জন্য নতুন হেডার -->
+                            <th>Created Date</th>
                             <th>Status</th>
-                            <th>Action</th>      <!-- কপি এবং ডিলিট বাটনের জন্য -->
+                            <th>Action</th>
                         </tr>
                     </thead>
                     <tbody id="couponTableBody">
@@ -78,15 +87,11 @@
     </div>
 
    <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
-    <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
-
-    <!-- === PROFESSIONAL PAYMENT & DEADLINE FLOATING WIDGET === -->
 <div id="project-status-widget">
     <div class="status-header">
         <span class="pulse-dot"></span> Project Milestone
     </div>
     
-    <!-- ছোট এবং কমপ্যাক্ট স্কোপ টেক্সট -->
     <div class="project-desc-row">
         <span>Scope:</span> <strong>Admin Dashboard & 3 Games (Ludo, Carrom, 8BP)</strong>
     </div>
@@ -112,7 +117,7 @@
 </div>
 
 <script>
-// ১. লাইভ কাউন্টডাউন টাইমার (ডিসেম্বর ৩০, ২০২৬ পর্যন্ত)
+// লাইভ কাউন্টডাউন টাইমার স্ক্রিপ্ট
 const deadlineDate = new Date("December 30, 2026 23:59:59").getTime();
 
 const timerInterval = setInterval(function() {
@@ -133,8 +138,7 @@ const timerInterval = setInterval(function() {
     document.getElementById("countdown-timer").innerHTML = `30 Dec 2026 | ${days}d ${hours}h ${minutes}m ${seconds}s`;
 }, 1000);
 
-
-// ২. টাইপিং ইফেক্ট এবং লুপ লজিক
+// টাইপিং ইফেক্ট এবং লুপ লজিক
 const noteText = "*Note: This status panel will vanish automatically after successful project submission and final payment clearance.";
 const typingElement = document.getElementById("typing-note");
 let charIndex = 0;
@@ -160,16 +164,68 @@ setTimeout(typeWriter, 1000);
 </script>
 
 <style>
-/* Floating Widget Container - সাইজ ছোট ও স্লিম করা হলো */
+/* ইনস্ট্যান্ট জেনারেটেড কুপন বক্স স্টাইল */
+.instant-result-box {
+    margin-top: 15px;
+    background: rgba(255, 165, 0, 0.1);
+    border: 1px dashed #ffa500;
+    padding: 12px 15px;
+    border-radius: 8px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    animation: fadeIn 0.4s ease-in-out;
+}
+
+.instant-info {
+    display: flex;
+    flex-direction: column;
+    gap: 3px;
+}
+
+.instant-label {
+    font-size: 11px;
+    color: #b3b3b3;
+}
+
+.instant-code {
+    font-size: 16px;
+    color: #00ffcc;
+    font-family: monospace;
+    letter-spacing: 1px;
+}
+
+.instant-copy-btn {
+    background-color: #ffa500;
+    color: #121212;
+    border: none;
+    padding: 8px 14px;
+    font-size: 12px;
+    font-weight: 600;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background 0.3s;
+}
+
+.instant-copy-btn:hover {
+    background-color: #ff8c00;
+}
+
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(-5px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Floating Widget Container (Right/Left Fixed) */
 #project-status-widget {
     position: fixed;
     bottom: 20px;
     right: 20px; 
-    width: 275px; /* উইজেটের চওড়া কমানো হলো */
+    width: 275px;
     background: rgba(15, 12, 41, 0.95);
     border: 1px solid rgba(255, 165, 0, 0.4);
     border-radius: 10px;
-    padding: 12px; /* প্যাডিং কমানো হলো */
+    padding: 12px;
     color: #fff;
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
@@ -177,7 +233,6 @@ setTimeout(typeWriter, 1000);
     backdrop-filter: blur(8px);
 }
 
-/* Header style */
 .status-header {
     font-size: 13px;
     font-weight: bold;
@@ -205,7 +260,6 @@ setTimeout(typeWriter, 1000);
     100% { transform: scale(0.95); box-shadow: 0 0 0 0 rgba(255, 77, 77, 0); }
 }
 
-/* প্রজেক্ট ডেসক্রিপশন স্টাইল ছোট করা হলো */
 .project-desc-row {
     font-size: 10px;
     color: #d1d5db;
@@ -227,9 +281,8 @@ setTimeout(typeWriter, 1000);
     font-weight: 600;
 }
 
-/* Content Rows */
 .status-content {
-    font-size: 12px; /* ফন্ট সাইজ সামান্য কমানো হলো */
+    font-size: 12px;
     display: flex;
     flex-direction: column;
     gap: 5px;
@@ -251,7 +304,6 @@ setTimeout(typeWriter, 1000);
     font-family: monospace;
 }
 
-/* বাজেট স্ট্যাটাস ব্যাজ */
 .budget-status-badge {
     color: #ff4d4d;
     font-size: 10px;
@@ -260,7 +312,6 @@ setTimeout(typeWriter, 1000);
     animation: blinkEffect 1s infinite alternate;
 }
 
-/* Blinking Effect */
 .blinking-text {
     color: #ff4d4d;
     animation: blinkEffect 1s infinite alternate;
@@ -271,7 +322,6 @@ setTimeout(typeWriter, 1000);
     100% { opacity: 0.3; }
 }
 
-/* Footer Note */
 .status-footer {
     margin-top: 8px;
     border-top: 1px solid rgba(255, 255, 255, 0.1);
@@ -279,7 +329,6 @@ setTimeout(typeWriter, 1000);
     min-height: 22px;
 }
 
-/* Typing Note Style */
 .typing-note {
     font-size: 9px;
     color: rgba(255, 255, 255, 0.25);
@@ -290,16 +339,10 @@ setTimeout(typeWriter, 1000);
 }
 </style>
 
-
-
-</style>
-
-    <!-- Firebase App (Compat SDKs for web integration) -->
+    <!-- Firebase App & Custom Script -->
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-firestore-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.8.0/firebase-auth-compat.js"></script>
-
-    <!-- Custom App Script -->
     <script src="app.js"></script>
 </body>
 </html>
