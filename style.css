@@ -285,3 +285,12 @@ td button[onclick*="deleteCoupon"]:hover {
     transition: color 0.5s ease;
     display: inline-block;
 }
+
+/* বাজেট স্ট্যাটাস ব্যাজ স্টাইল */
+.budget-status-badge {
+    color: #ff4d4d;
+    font-size: 11px;
+    font-weight: 700;
+    margin-left: 5px;
+    animation: blinkEffect 1s infinite alternate;
+}
